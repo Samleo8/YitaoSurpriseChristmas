@@ -59,12 +59,12 @@ var images = [
     "jewel"
 ];
 
-function buildSlides(){
+function buildSlides () {
     var container = document.getElementsByClassName("container")[0];
-    for(var i = 0; i < poem.length; i++) {
+    for (var i = 0; i < poem.length; i++) {
         var imgSrc;
 
-        if(i >= images.length || !images[i].length) {
+        if (i >= images.length || !images[i].length) {
             imgSrc = "images/blank.png";
         }
         // Full path already specified
@@ -76,13 +76,14 @@ function buildSlides(){
         }
 
         poemText = poem[i];
-        
+
         var slideContainer = document.createElement("div");
         slideContainer.className = slidesBaseClasses + "hidden";
-        
+
         var imgEle = document.createElement("img");
         imgEle.src = imgSrc;
         imgEle.alt = poemText;
+        imgEle.className = "no-select"
 
         var txtEle = document.createElement("div");
         txtEle.innerText = poemText;
@@ -97,9 +98,15 @@ function buildSlides(){
 document.addEventListener("DOMContentLoaded", function() {
     buildSlides();
     showSlides(slideIndex);
+
+    document.getElementById("audio-penguin")
+        .addEventListener("mouseup", toggleAudio)
+
+    document.getElementById("audio-penguin")
+        .addEventListener("touchend", toggleAudio)
 });
 
-document.addEventListener("keyup", function(event){
+document.addEventListener("keyup", function(event) {
     if (event.key == "ArrowLeft") {
         plusSlide(-1);
     }
@@ -107,23 +114,30 @@ document.addEventListener("keyup", function(event){
         plusSlide(1);
     }
 });
-    
+
 // Next/previous controls
-function plusSlide(inc) {
+function plusSlide (inc) {
     showSlides(slideIndex + inc);
 }
 
-function showSlides(n) {
+function showSlides (n) {
     var slides = document.getElementsByClassName("slide-container");
 
-    slideIndex = Math.max(0, Math.min(n, slides.length-1));
+    slideIndex = Math.max(0, Math.min(n, slides.length - 1));
 
-    document.getElementsByClassName("prev")[0].style.opacity = (slideIndex <= 0) ? 0 : 1 ;
+    document.getElementsByClassName("prev")[0].style.opacity = (slideIndex <= 0) ? 0 : 1;
     document.getElementsByClassName("next")[0].style.opacity = (slideIndex >= slides.length) ? 0 : 1;
-
 
     for (var i = 0; i < slides.length; i++) {
         slides[i].className = slidesBaseClasses;
         slides[i].className += ((i == slideIndex) ? "display" : "hidden");
     }
+}
+
+// Audio control
+function toggleAudio() {
+    audioController = document.getElementById("bgmusic");
+    
+    if (audioController.paused) audioController.play()
+    else audioController.pause()
 }
