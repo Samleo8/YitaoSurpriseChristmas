@@ -48,7 +48,15 @@ var images = [
     "upsanddowns",
     "rain",
     "cross",
-    "lamb"
+    "lamb",
+    "bye",
+    "unite",
+    "livedownhere",
+    "peace",
+    "pray",
+    "jiayou",
+    "hearts",
+    "jewel"
 ];
 
 function buildSlides(){
