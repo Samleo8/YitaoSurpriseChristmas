@@ -16,7 +16,7 @@ var poem = [
     "We realised how much we missed those hugs",
     "We realised how the love of two joined hearts",
     "Beats ever stronger when they're apart.",
-    "Through ups and downs highs and lows,",
+    "Through ups and downs, and highs and lows,",
     "We held fast, through the stormy blows,",
     "Standing firm on the Rock of Christ,",
     "Drawing strength from His sacrifice",
@@ -31,30 +31,24 @@ var poem = [
 ];
 
 var images = [
-    "happybirthday",
-    "lonelyboi",
-    "yitaocute",
-    "kindpenguin",
-    "glassesyitao",
-    "actblur",
+    "merrychristmas",
+    "shocked",
     "cutetgt",
-    "classyitao",
-    "computerbugs",
-    // TODO: more verses
-    "morelove",
-    "jewel",
-    "dunno",
-    "pray", 
-    "images/blessings.gif",
-    "jiayou",
-    "peace",
-    "hugs",
-    "love2",
+    "nottrainedforthis",
     "pray",
+    "love2",
+    "goodjob",
+    "images/baptised.gif",
+    "baptised2",
+    // TODO: more verses
+    "computerbugs",
+    "hugs",
+    "hearts",
+    "hearts2",
     "upsanddowns",
+    "rain",
     "cross",
-    "penguintgt",
-    "hugs2"
+    "lamb"
 ];
 
 function buildSlides(){
@@ -98,10 +92,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("keyup", function(event){
-    if (event.keyCode == 37) {
+    if (event.key == "ArrowLeft") {
         plusSlide(-1);
     }
-    else if (event.keyCode == 39) {
+    else if (event.key == "ArrowRight") {
         plusSlide(1);
     }
 });
